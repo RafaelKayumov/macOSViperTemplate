@@ -1,0 +1,51 @@
+{% include 'header' %}
+
+import Cocoa
+
+private let {{ module_info.name }}ViewControllerIdentifier = "{{ module_info.name }}ViewController"
+private let {{ module_info.name }}ViewControllerStoryboardName = "{{ module_info.name }}"
+
+class {{ module_info.name }}Assembly {
+}
+
+//public
+extension {{ module_info.name }}Assembly {
+    
+    typealias TransitionBlock = (_ router: {{ module_info.name }}RouterInput) -> Void
+    typealias RouteCompletionBlock = (_ input: {{ module_info.name }}ModuleInput) -> Void
+    
+    static func assembleModuleWithOutput(_ moduleOutput: {{ module_info.name }}ModuleOutput?, transitionBlock: TransitionBlock?, completion: RouteCompletionBlock?) {
+        let view = newView()
+        let presenter = {{ module_info.name }}Presenter()
+        let interactor = {{ module_info.name }}Interactor()
+        let router = {{ module_info.name }}Router()
+
+        presenter.view = view
+        view.output = presenter
+        presenter.router = router
+        router.view = view
+        presenter.interactor = interactor
+        interactor.output = presenter
+        presenter.moduleOutput = moduleOutput
+
+        presenter.doWhenViewGetsReady {
+            addChildComponents()
+            completion?(presenter)
+        }
+
+        transitionBlock?(router)
+    }
+
+    private static func addChildComponents() {
+        //present child submodules
+    }
+}
+
+//factory
+private extension {{ module_info.name }}Assembly {
+
+    private static func newView() -> {{ module_info.name }}ViewController {
+        let storyboard = NSStoryboard(name: NSStoryboard.Name(rawValue: {{ module_info.name }}ViewControllerStoryboardName), bundle: nil)
+        return storyboard.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier.init({{ module_info.name }}ViewControllerIdentifier)) as! {{ module_info.name }}ViewController
+    }
+}

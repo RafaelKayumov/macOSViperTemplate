@@ -1,0 +1,20 @@
+{% include 'header' %}
+
+import Cocoa
+
+class {{ module_info.name }}ViewController: NSViewController, {{module_info.name}}ViewInput {
+
+    var output: {{ module_info.name }}ViewOutput!
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        output.viewDidGetReady()
+    }
+
+    override func viewWillAppear() {
+        super.viewWillAppear()
+        
+        output.viewWillAppear()
+    }
+}

@@ -1,0 +1,31 @@
+# Template information section
+name: macOSViperTemplate
+summary: VIPER module template
+author: Rafael Kayumov
+version: 1.0.0
+license: MIT
+
+# The declarations for code files
+code_files:
+
+# View layer
+- {name: "View/ViewController.swift", path: "FileTemplates/View/viewcontroller.swift.liquid"}
+- {name: "View/ViewInput.swift", path: "FileTemplates/View/view_input.swift.liquid"}
+- {name: "View/ViewOutput.swift", path: "FileTemplates/View/view_output.swift.liquid"}
+
+# Router Layer
+- {name: "Router/RouterInput.swift", path: "FileTemplates/Router/router_input.swift.liquid"}
+- {name: "Router/Router.swift", path: "FileTemplates/Router/router.swift.liquid"}
+
+# Presenter Layer
+- {name: "Presenter/ModuleInput.swift", path: "FileTemplates/Presenter/module_input.swift.liquid"}
+- {name: "Presenter/ModuleOutput.swift", path: "FileTemplates/Presenter/module_output.swift.liquid"}
+- {name: "Presenter/Presenter.swift", path: "FileTemplates/Presenter/presenter.swift.liquid"}
+
+# Interactor Layer
+- {name: "Interactor/InteractorInput.swift", path: "FileTemplates/Interactor/interactor_input.swift.liquid"}
+- {name: "Interactor/InteractorOutput.swift", path: "FileTemplates/Interactor/interactor_output.swift.liquid"}
+- {name: "Interactor/Interactor.swift", path: "FileTemplates/Interactor/interactor.swift.liquid"}
+
+# Assembly Layer
+- {name: "Assembly/Assembly.swift", path: "FileTemplates/Assembly/assembly.swift.liquid"}
